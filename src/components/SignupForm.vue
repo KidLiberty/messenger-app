@@ -8,6 +8,7 @@
     />
     <input type="email" v-model="email" placeholder="Email" required />
     <input type="password" v-model="password" placeholder="Password" required />
+    <div class="error">{{ error }}</div>
     <button>Sign Up</button>
   </form>
 </template>
@@ -30,7 +31,7 @@ export default {
       console.log('User signed up!')
     }
 
-    return { displayName, email, password, handleSubmit }
+    return { displayName, email, password, handleSubmit, error }
   }
 }
 </script>

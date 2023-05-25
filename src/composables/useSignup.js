@@ -4,6 +4,7 @@ import {
   getAuth,
   updateProfile
 } from 'firebase/auth'
+import { auth } from '@/firebase/config'
 
 const error = ref(null)
 
@@ -12,7 +13,6 @@ const signup = async (email, password, displayName) => {
   error.value = null
 
   try {
-    const auth = getAuth()
     // Created account is the Firebase object, it has a displayName property on it
     const createdAccount = await createUserWithEmailAndPassword(
       auth,
@@ -31,7 +31,7 @@ const signup = async (email, password, displayName) => {
     return createdAccount
   } catch (err) {
     console.log(err.message)
-    err.value = err.message
+    error.value = err.message
   }
 }
 
