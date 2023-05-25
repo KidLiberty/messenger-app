@@ -1,9 +1,6 @@
 import { ref } from 'vue'
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  updateProfile
-} from 'firebase/auth'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+
 import { auth } from '@/firebase/config'
 
 const error = ref(null)
