@@ -23,7 +23,7 @@ export default {
       await logout()
       if (!error.value) {
       }
-      router.push('/')
+      router.push({ name: 'Welcome' })
     }
 
     return { user, handleClick }

@@ -8,7 +8,11 @@ import Welcome from '../views/Welcome'
 
 const requireAuth = (to, from, next) => {
   let user = auth.currentUser
-  !user ? next({ name: 'Welcome' }) : next()
+  if (!user) {
+    next({ name: 'Welcome' })
+  } else {
+    next()
+  }
 }
 
 const routes = [
