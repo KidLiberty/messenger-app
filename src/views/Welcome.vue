@@ -20,8 +20,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-import LoginForm from '../components/LoginForm'
-import SignupForm from '../components/SignupForm.vue'
+import { LoginForm, SignupForm } from '@/components'
 
 export default {
   components: { LoginForm, SignupForm },

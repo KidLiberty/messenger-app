@@ -12,6 +12,7 @@ import './assets/main.css'
  if they refresh the chatroom
 */
 let app
+
 auth.onAuthStateChanged(() => {
   if (!app) {
     app = createApp(App).use(router).mount('#app')

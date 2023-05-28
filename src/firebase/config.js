@@ -19,9 +19,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 
-export const db = getFirestore(app)
+const db = getFirestore(app)
 
-export const auth = initializeAuth(app, {
+const auth = initializeAuth(app, {
   persistence: [
     indexedDBLocalPersistence,
     browserLocalPersistence,
@@ -29,3 +29,5 @@ export const auth = initializeAuth(app, {
   ],
   popupRedirectResolver: browserPopupRedirectResolver
 })
+
+export { auth, db }
