@@ -6,6 +6,12 @@
       @keypress.enter.prevent="handleSubmit"
     ></textarea>
     <div class="error">{{ error }}</div>
+    <button
+      :class="message.length > 0 ? 'active' : 'inactive'"
+      @click.prevent="handleSubmit"
+    >
+      Send
+    </button>
   </form>
 </template>
 
@@ -22,6 +28,9 @@ export default {
     const message = ref('')
 
     const handleSubmit = async () => {
+      console.log(message.value.length)
+      if (!message.value.length > 0) return
+
       const chat = {
         name: user.value.displayName,
         message: message.value,
@@ -54,5 +63,16 @@ textarea {
   font-family: inherit;
   resize: none;
   outline: none;
+}
+button,
+.active {
+  margin-bottom: 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+.inactive {
+  background: #888;
+  cursor: not-allowed;
+  transition: all 0.2s ease-in-out;
 }
 </style>
