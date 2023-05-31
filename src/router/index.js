@@ -4,8 +4,9 @@ import { auth } from '@/firebase/config'
 import Chatroom from '../views/Chatroom'
 import Welcome from '../views/Welcome'
 
-// Auth guard
+// Auth guards
 
+// If user is not logged in
 const requireAuth = (to, from, next) => {
   let user = auth.currentUser
   if (!user) {
@@ -15,11 +16,22 @@ const requireAuth = (to, from, next) => {
   }
 }
 
+// If user is already logged in
+const requireNoAuth = (to, from, next) => {
+  let user = auth.currentUser
+  if (user) {
+    next({ name: 'Chatroom' })
+  } else {
+    next()
+  }
+}
+
 const routes = [
   {
     path: '/',
     name: 'Welcome',
-    component: Welcome
+    component: Welcome,
+    beforeEnter: requireNoAuth
   },
   {
     path: '/chatroom',
